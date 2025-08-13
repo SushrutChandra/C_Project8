@@ -1,0 +1,20 @@
+#!/bin/tcsh
+
+#
+# This test checks the output of the program on a program that has enough
+# comments.
+#
+
+unset anyerror
+
+./check-comments.x test2program.c | diff - test2.results
+
+# this is examining the exit status of the diff command
+if ($status == 0) then
+  echo 'Success!'
+  exit 0
+else
+  echo
+  echo 'Failure!  (Output differed from expected output.)'
+  exit 1
+endif
